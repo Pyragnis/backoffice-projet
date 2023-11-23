@@ -15,7 +15,7 @@ const NavbarTitle = styled.h1`
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <NavbarTitle>Mon Site</NavbarTitle>
+      <NavbarTitle>backoffice</NavbarTitle>
     </NavbarContainer>
   );
 };
