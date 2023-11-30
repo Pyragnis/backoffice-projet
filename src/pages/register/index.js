@@ -1,6 +1,6 @@
 // pages/Login/index.js
 import React from 'react';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/VerticalNavbar';
 import Form from '../../components/FormRegister';
 
 const Register = () => {

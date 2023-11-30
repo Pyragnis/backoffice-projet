@@ -1,15 +1,30 @@
 // VerticalNavbar.js
 import React from 'react';
 import styled from 'styled-components';
+import ThreeLogo from '../ThreeLogo';
 
 const NavbarContainer = styled.div`
-  height: 100%;
+  height: 100vh; /* Utilisez la hauteur de la vue pour occuper tout l'écran */
   width: 200px;
   background-color: #333;
   position: fixed;
   left: 0;
   top: 0;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+`;
+
+const LinksContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding-top: 20px;
 `;
 
@@ -18,7 +33,6 @@ const NavbarLink = styled.a`
   text-decoration: none;
   font-size: 18px;
   color: white;
-  display: block;
   transition: background-color 0.3s;
 
   &:hover {
@@ -29,11 +43,15 @@ const NavbarLink = styled.a`
 const VerticalNavbar = () => {
   return (
     <NavbarContainer>
-      <NavbarLink href="#">Accueil</NavbarLink>
-      <NavbarLink href="#">Utilisateurs</NavbarLink>
-      <NavbarLink href="#">Produits</NavbarLink>
-      <NavbarLink href="#">Statistiques</NavbarLink>
-      {/* Ajoutez d'autres liens selon vos besoins */}
+      <LogoContainer>
+        <ThreeLogo />
+      </LogoContainer>
+      <LinksContainer>
+        <NavbarLink href="/Accueil">Accueil</NavbarLink>
+        <NavbarLink href="/Register">Ajouter un compte</NavbarLink>
+        <NavbarLink href="/Music">Ajouter une musique</NavbarLink>
+        {/* Ajoutez d'autres liens selon vos besoins */}
+      </LinksContainer>
     </NavbarContainer>
   );
 };
