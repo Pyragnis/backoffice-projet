@@ -44,7 +44,10 @@ const VerticalNavbar = () => {
   return (
     <NavbarContainer>
       <LogoContainer>
-        <ThreeLogo />
+      <ThreeLogo
+        modelId="8d06874aac5246c59edb4adbe3606e0e"
+        modelName="Mech Drone"
+      />
       </LogoContainer>
       <LinksContainer>
         <NavbarLink href="/Accueil">Accueil</NavbarLink>
@@ -55,5 +58,6 @@ const VerticalNavbar = () => {
     </NavbarContainer>
   );
 };
+
 
 export default VerticalNavbar;

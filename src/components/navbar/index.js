@@ -1,6 +1,7 @@
 // Navbar.js
 import React from 'react';
 import styled from 'styled-components';
+import three from '../ThreeLogo'
 
 const NavbarContainer = styled.nav`
   background-color: #333; /* Dark gray background */

@@ -1,44 +1,45 @@
-// ThreeCustomModel.js
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
+// SketchfabEmbed.js
+import React,{useEffect} from 'react';
 
-const ThreeCustomModel = () => {
-  const mount = useRef(null);
+
+const SketchfabEmbed = ({ modelId, modelName }) => {
 
   useEffect(() => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    // Sélectionnez la div avec la classe 'controls'
+    const controlsDiv = document.querySelector('.controls');
 
-    renderer.setSize(120, 120);
-    renderer.setClearColor(0x000000, 0);
+    // Ajoutez du CSS à la div si elle existe
+    if (controlsDiv) {
+      controlsDiv.style.display = 'none';
+    }
 
-    mount.current.appendChild(renderer.domElement);
-
-    const loader = new GLTFLoader();
-
-    // Charger votre modèle glTF ici
-    loader.load('path/to/your/model.gltf', (gltf) => {
-      scene.add(gltf.scene);
-    });
-
-    camera.position.z = 5;
-
-    const animate = () => {
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-    };
-
-    animate();
-
+    // Nettoyez le style lorsque le composant est démonté
     return () => {
-      // Nettoyer les ressources lors du démontage du composant
-      renderer.dispose();
+      if (controlsDiv) {
+        controlsDiv.style.display = 'block'; // ou la valeur initiale que vous souhaitez
+      }
     };
-  }, []);
+  }, []); // Le tableau vide signifie que cela ne s'exécute qu'une seule fois après le montage du composant
 
-  return <div ref={mount} style={{ margin: '10px' }} />;
+  return (
+    <div className="sketchfab-embed-wrapper">
+      <iframe
+        title={modelName}
+        frameBorder="0"
+        allowFullScreen
+        mozAllowFullScreen="true"
+        webkitAllowFullScreen="true"
+        allow="autoplay; fullscreen; xr-spatial-tracking"
+        xr-spatial-tracking
+        execution-while-out-of-viewport
+        execution-while-not-rendered
+        web-share
+        src={`https://sketchfab.com/models/${modelId}/embed?autostart=1&controls=0`}
+        style={{ width: '100%', height: '100%' }}
+      ></iframe>
+
+    </div>
+  );
 };
 
-export default ThreeCustomModel;
+export default SketchfabEmbed;
