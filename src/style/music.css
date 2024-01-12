@@ -1,0 +1,43 @@
+.musics-container {
+    color: white;
+    background-color: black;
+  }
+  
+  .top-bar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 1rem;
+    position: relative;
+  }
+  
+  .search-bar input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid yellow;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: yellow;
+  }
+  
+  .add-btn {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+  }
+  
+  
