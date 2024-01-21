@@ -105,12 +105,12 @@ const Cover = () => {
               >
                 <IconTrash />
               </button>
-              <button
+              {/* <button
                 className="text-blue-500"
                 onClick={() => handleEdit(cover.cover_id)}
               >
                 <IconEdit />
-              </button>
+              </button> */}
             </div>
           </div>
         ))}

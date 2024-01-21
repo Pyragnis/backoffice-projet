@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IconArrowRight, IconPlus, IconTrash, IconEdit } from "@tabler/icons-react";
 import { useSidebar } from "../Context/SidebarContext";
 import AlbumModal from "../Components/AlbumModal"; // Update with your actual modal component
+import AlbumEditModal from "../Components/AlbumEditModal"; // Import the AlbumEditModal
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
@@ -10,6 +11,7 @@ const Albums = () => {
   const [showModal, setShowModal] = useState(false);
   const [albums, setAlbums] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedAlbumId, setSelectedAlbumId] = useState(null); // State to track selected album for editing
 
   useEffect(() => {
     const getAlbums = async () => {
@@ -52,7 +54,7 @@ const Albums = () => {
 
   const handleEdit = (albumId) => {
     console.log("Editing album with ID:", albumId);
-    // Add logic for editing albums here...
+    setSelectedAlbumId(albumId); // Set the selected album ID for editing
   };
 
   return (
@@ -103,6 +105,12 @@ const Albums = () => {
         ))}
       </div>
       <AlbumModal showModal={showModal} onClose={closeModal} />
+      {selectedAlbumId !== null && (
+        <AlbumEditModal 
+          albumId={selectedAlbumId} 
+          onClose={() => setSelectedAlbumId(null)} 
+        />
+      )}
     </div>
   );
 };
